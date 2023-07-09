@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'http://mesto-project.nomoreparties.sbs',
   credentials: true,
 }));
 

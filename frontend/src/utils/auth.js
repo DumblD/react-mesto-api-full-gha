@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'http://mesto-project.nomoreparties.sbs';
 
 function checkServerResponseState(res) {
   if (res.ok) {
