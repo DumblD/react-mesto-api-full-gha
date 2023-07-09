@@ -22,7 +22,7 @@ function Header({
   }
 
   function systemLogout() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('isAuthorized');
     navigate('/signin', { replace: true });
   }
 
