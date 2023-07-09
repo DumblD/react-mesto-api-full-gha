@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const routes = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorsHandler = require('./middlewares/error');
@@ -25,6 +26,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(requestLogger);
+app.use(cors({
+  origin: 'http://localhost:3001',
+  credentials: true,
+}));
 
 app.use(routes);
 
