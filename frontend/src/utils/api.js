@@ -19,6 +19,7 @@ class Api {
   getInitialCards() {
     return this._request(this._url, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -26,6 +27,7 @@ class Api {
   addNewCard(data) {
     return this._request(this._url, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(data),
     });
@@ -34,6 +36,7 @@ class Api {
   deleteCard(cardId) {
     return this._request(this._url + `/${cardId}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -41,6 +44,7 @@ class Api {
   getUserInfo() {
     return this._request(this._url.slice(0,-5) + "users/me", {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -48,6 +52,7 @@ class Api {
   updateUserInfo(name, about) {
     return this._request(this._url.slice(0,-5) + "users/me", {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -59,6 +64,7 @@ class Api {
   updateUserAvatar(avatarLink) {
     return this._request(this._url.slice(0,-5) + "users/me/avatar", {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: avatarLink
@@ -69,6 +75,7 @@ class Api {
   setLike(cardId) {
     return this._request(this._url + `/${cardId}/likes`, {
       method: 'PUT',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -76,6 +83,7 @@ class Api {
   deleteLike(cardId) {
     return this._request(this._url + `/${cardId}/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -86,7 +94,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62/cards',
+  baseUrl: 'http://localhost:3000/cards',
   headers: {
     authorization: 'f8467b0b-f7fd-4121-966e-12a5314122ec',
     'Content-Type': 'application/json'
