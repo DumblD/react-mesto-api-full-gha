@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://localhost:3000';
 
 function checkServerResponseState(res) {
   if (res.ok) {
@@ -16,6 +16,7 @@ function request(endpoint, options) {
 export const register = (registerData) => {
   return request('/signup', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -26,25 +27,25 @@ export const register = (registerData) => {
 export const authorize = (loginData) => {
   return request('/signin', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(loginData)
   })
   .then((data) => {
-    if (data.token) {
-      localStorage.setItem('jwt', data.token);
-      return data;
+    if (data.message === 'Аутентификация прошла успешна') {
+      localStorage.setItem('isAuthorized', true);
     }
   })
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return request('/users/me', {
     method: 'GET',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Content-Type": "application/json"
     }
   })
 }
