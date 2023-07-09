@@ -81,14 +81,13 @@ function App() {
 
   function onLogin(loginData, clearInputs) {
     auth.authorize(loginData)
-      .then((data) => {
-        if (data) {
-          if (data.token) {
-            clearInputs();
-            setCurrentUserEmail(loginData.email);
-            handleLogin();
-            navigate('/', { replace: true });
-          }
+      .then(() => {
+        const isAuthorized = localStorage.getItem('isAuthorized');
+        if (isAuthorized) {
+          clearInputs();
+          setCurrentUserEmail(loginData.email);
+          handleLogin();
+          navigate('/', { replace: true });
         }
         return;
       })
@@ -116,15 +115,17 @@ function App() {
     handleTokenCheck();
   }, [])
 
-  function handleTokenCheck() {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt).then((res) => {
-        if (res) {
-          setCurrentUserEmail(res.data.email);
-          setLoggedIn(true);
-          navigate("/", { replace: true });
-        }
+  async function handleTokenCheck() {
+    const isAuthorized = localStorage.getItem('isAuthorized');
+    if (!isAuthorized) {
+      return;
+    }
+    const isToken = await auth.checkToken();
+    if (isAuthorized && isToken) {
+      api.getUserInfo().then((userData) => {
+        setCurrentUserEmail(userData.email);
+        setLoggedIn(true);
+        navigate("/", { replace: true });
       }).catch((err) => {
         alert(`${err}
 Что-то пошло не так. Попробуйте войти снова.`);
@@ -145,7 +146,7 @@ function App() {
   function getInitialCards() {
     api.getInitialCards()
       .then((data) => {
-        setCards(data);
+        setCards(data.data.reverse());
       })
       .catch((err) => {
         alert(err);
@@ -153,7 +154,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((like) => like._id === currentUser._id);
+    const isLiked = card.likes.some((likeId) => likeId === currentUser._id);
 
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
