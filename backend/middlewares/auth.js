@@ -4,8 +4,9 @@ const UnauthorizedError = require('../utils/customErrorsClasses/UnauthorizedErro
 const auth = async (req, res, next) => {
   let payload;
   const token = req.cookies.jwt;
+  const jwtSecretKey = process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'jwt-secret-key';
   try {
-    payload = jwt.verify(token, process.env.SECRET_TOKEN_KEY);
+    payload = jwt.verify(token, jwtSecretKey);
   } catch (err) {
     next(new UnauthorizedError('Неуспешная авторизация'));
     return;
