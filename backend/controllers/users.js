@@ -15,9 +15,10 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       throw new UnauthorizedError('Неуспешная авторизация');
     }
-    const jwt = jsonWebToken.sign({
-      _id: foundUser._id,
-    }, process.env.SECRET_TOKEN_KEY);
+    const jwt = jsonWebToken.sign(
+      { _id: foundUser._id },
+      process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'jwt-secret-key',
+    );
     res
       .cookie('jwt', jwt, {
         maxAge: 3600000 * 24 * 7,
