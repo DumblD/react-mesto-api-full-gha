@@ -26,7 +26,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(requestLogger);
-app.use(cors());
+app.use(cors({
+  origin: 'https://mesto-project.nomoreparties.sbs',
+  credentials: true,
+}));
 
 app.use(routes);
 
