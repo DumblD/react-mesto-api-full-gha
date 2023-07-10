@@ -1,6 +1,6 @@
 {
   "name": "react-mesto-auth",
-  "homepage": "http://mesto-project.nomoreparties.sbs",
+  "homepage": "https://mesto-project.nomoreparties.sbs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

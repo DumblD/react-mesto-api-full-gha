@@ -94,7 +94,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://api.mesto-project.nomoreparties.sbs/cards',
+  baseUrl: 'https://api.mesto-project.nomoreparties.sbs/cards',
   headers: {
     authorization: 'f8467b0b-f7fd-4121-966e-12a5314122ec',
     'Content-Type': 'application/json'
