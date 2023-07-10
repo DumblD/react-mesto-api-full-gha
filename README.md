@@ -7,8 +7,8 @@
 
 ## Ссылки на проект
 
-IP-адрес: 51.250.66.41
+IP 51.250.66.41
 
-Frontend: https://mesto-project.nomoreparties.sbs
+Frontend https://mesto-project.nomoreparties.sbs
 
-Backend: https://api.mesto-project.nomoreparties.sbs
+Backend https://api.mesto-project.nomoreparties.sbs
