@@ -22,6 +22,7 @@ function MestoGeneralPage({
   useEffect(() => {
     getUserInfo();
     getInitialCards();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

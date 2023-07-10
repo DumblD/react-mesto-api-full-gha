@@ -112,26 +112,26 @@ function App() {
   }
 
   useEffect(() => {
+    async function handleTokenCheck() {
+      const isAuthorized = localStorage.getItem('isAuthorized');
+      if (!isAuthorized) {
+        return;
+      }
+      const isToken = await auth.checkToken();
+      if (isAuthorized && isToken) {
+        api.getUserInfo().then((userData) => {
+          setCurrentUserEmail(userData.email);
+          setLoggedIn(true);
+          navigate("/", { replace: true });
+        }).catch((err) => {
+          alert(`${err}
+  Что-то пошло не так. Попробуйте войти снова.`);
+        })
+      }
+    }
     handleTokenCheck();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  async function handleTokenCheck() {
-    const isAuthorized = localStorage.getItem('isAuthorized');
-    if (!isAuthorized) {
-      return;
-    }
-    const isToken = await auth.checkToken();
-    if (isAuthorized && isToken) {
-      api.getUserInfo().then((userData) => {
-        setCurrentUserEmail(userData.email);
-        setLoggedIn(true);
-        navigate("/", { replace: true });
-      }).catch((err) => {
-        alert(`${err}
-Что-то пошло не так. Попробуйте войти снова.`);
-      })
-    }
-  }
 
   function getUserInfo() {
     api.getUserInfo()

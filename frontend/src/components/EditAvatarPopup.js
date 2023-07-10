@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PopupWithForm from './PopupWithForm.js';
 import FormInput from './FormInput.js';
 import { useFormAndValidation } from '../utils/customHooks/useFormAndValidation.js';
@@ -36,6 +36,7 @@ function EditProfilePopup({
 
   useEffect(() => {
     resetForm();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (

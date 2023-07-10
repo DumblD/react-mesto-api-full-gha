@@ -68,6 +68,7 @@ function handleSubmit(ev) {
     setIsSubmitButtonActive(true);
     setValuesToInputs();
     return () => resetForm();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (

@@ -38,10 +38,6 @@ function AddPlacePopup({
     }
   ]
 
-  const clearInputs = () => {
-    resetForm();
-  }
-
   function handleAddPlaceSubmit(ev) {
     ev.preventDefault();
 
@@ -52,7 +48,11 @@ function AddPlacePopup({
   }
 
   useEffect(() => {
+    const clearInputs = () => {
+      resetForm();
+    }
     clearInputs();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (
