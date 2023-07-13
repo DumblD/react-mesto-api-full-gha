@@ -38,7 +38,7 @@ function FormInput({
         pattern={pattern? `${pattern}` : undefined}
         title={name === "registerPassword"? '' : title? `${title}` : ''}
       />
-      <span className={`popup__error ${name}-error ${typeof isMainPage === "undefined"? '' : isMainPage? '' : 'popup__error_extended-max-width'}`}>{name === "registerPassword"? title : errorMessageText}</span>
+      <span className={`popup__error ${name}-error ${typeof isMainPage === "undefined"? '' : isMainPage? '' : 'popup__error_extended-max-width'}`}>{name === "registerPassword" && errorMessageText? title : errorMessageText}</span>
     </>
   );
 }
