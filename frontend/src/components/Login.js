@@ -87,7 +87,8 @@ function Login({ onLogin, currentUserEmail }) {
                 inputElement={input}
                 isInputValid={isInputValid[input.name]}
                 errorMessageText={errors[input.name]}
-                onChange={handleChange} />
+                onChange={handleChange}
+                isMainPage={isMainPage} />
             ))
           }
           <button type="submit" disabled={!isSubmitButtonActive} className={`login__button ${isSubmitButtonActive ? '' : 'login__button_disabled'}`}>Войти</button>

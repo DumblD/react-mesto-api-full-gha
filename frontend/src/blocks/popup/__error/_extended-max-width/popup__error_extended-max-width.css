@@ -1,0 +1,5 @@
+@media screen and (max-width: 620px) {
+  .popup__error_extended-max-width {
+    max-width: 282px;
+  }
+}

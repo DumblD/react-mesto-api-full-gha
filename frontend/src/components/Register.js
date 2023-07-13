@@ -86,7 +86,8 @@ function Register({
                 inputElement={input}
                 isInputValid={isInputValid[input.name]}
                 errorMessageText={errors[input.name]}
-                onChange={handleChange} />
+                onChange={handleChange}
+                isMainPage={isMainPage} />
             ))
           }
 

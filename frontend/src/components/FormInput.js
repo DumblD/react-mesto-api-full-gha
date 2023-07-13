@@ -15,7 +15,8 @@ function FormInput({
   isInputValid,
   errorMessageText,
   pattern,
-  title
+  title,
+  isMainPage
 }) {
 
   function handleCheckValidity(ev) {
@@ -37,7 +38,7 @@ function FormInput({
         pattern={pattern? `${pattern}` : undefined}
         title={title? `${title}` : ''}
       />
-      <span className={`popup__error ${name}-error`}>{errorMessageText}</span>
+      <span className={`popup__error ${name}-error ${typeof isMainPage === "undefined"? '' : isMainPage? '' : 'popup__error_extended-max-width'}`}>{errorMessageText}</span>
     </>
   );
 }
