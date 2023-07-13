@@ -36,9 +36,9 @@ function FormInput({
         value={value}
         onChange={handleCheckValidity}
         pattern={pattern? `${pattern}` : undefined}
-        title={title? `${title}` : ''}
+        title={name === "registerPassword"? '' : title? `${title}` : ''}
       />
-      <span className={`popup__error ${name}-error ${typeof isMainPage === "undefined"? '' : isMainPage? '' : 'popup__error_extended-max-width'}`}>{errorMessageText}</span>
+      <span className={`popup__error ${name}-error ${typeof isMainPage === "undefined"? '' : isMainPage? '' : 'popup__error_extended-max-width'}`}>{name === "registerPassword"? title : errorMessageText}</span>
     </>
   );
 }
