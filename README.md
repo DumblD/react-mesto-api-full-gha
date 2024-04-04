@@ -7,8 +7,8 @@
 
 ## Ссылки на проект
 
-IP 51.250.66.41
+IP 130.193.51.54
 
-Frontend https://mesto-project.nomoreparties.sbs
+Frontend https://mesto-project.xyz
 
-Backend https://api.mesto-project.nomoreparties.sbs
+Backend https://api.mesto-project.xyz
