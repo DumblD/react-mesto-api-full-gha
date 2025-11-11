@@ -10,7 +10,7 @@ const errorsHandler = require('./middlewares/error');
 
 const app = express();
 
-mongoose.connect(`mongodb://${process.env.NODE_ENV === 'production' ? process.env.DOMAIN : '127.0.0.1:27017'}/mestodb`, {
+mongoose.connect(`mongodb://${process.env.DOMAIN}/mestodb`, {
   useNewUrlParser: true,
 })
   .then(() => {
