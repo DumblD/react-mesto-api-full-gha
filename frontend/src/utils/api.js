@@ -94,7 +94,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.mesto-project.xyz/cards',
+  baseUrl: 'https://api.mestoproject.ru/cards',
   headers: {
     'Content-Type': 'application/json'
   }

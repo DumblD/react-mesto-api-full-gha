@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mesto-project.xyz';
+export const BASE_URL = 'https://api.mestoproject.ru';
 
 function checkServerResponseState(res) {
   if (res.ok) {
